@@ -23,10 +23,20 @@ public class BookController {
     }
 
     @GetMapping("/get")
+    @ResponseStatus(HttpStatus.FOUND)
     public List<BookEntity> getBooks(){
        return service.getBooks();
     }
 
+    @DeleteMapping("/{id}")
+    public String deleteBook(@PathVariable Long id){
+        if (service.deleteBook(id)){
+            return "Deleted Book";
+        }else{
+            return "Not Found";
+        }
+
+    }
 
 
 }
