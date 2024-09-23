@@ -11,4 +11,5 @@ public interface BookService {
     boolean deleteBook(Long id);
     Book getBookById(Long id);
     List<BookEntity> getBooksByTitle(String title);
+    List<BookEntity> getBooksByCategory(String category);
 }

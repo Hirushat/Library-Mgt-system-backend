@@ -66,4 +66,17 @@ public class BookServiceImpl implements BookService {
         }
         return titledBooks;
     }
+
+    @Override
+    public List<BookEntity> getBooksByCategory(String category) {
+        List<BookEntity> books = repository.findAll();
+        List<BookEntity> titledBooks = new ArrayList<>();
+
+        for (BookEntity book : books) {
+            if(book.getCategory().equals(category)){
+                titledBooks.add(book);
+            }
+        }
+        return titledBooks;
+    }
 }

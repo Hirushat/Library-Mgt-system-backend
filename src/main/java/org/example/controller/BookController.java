@@ -45,6 +45,11 @@ public class BookController {
         return service.getBooksByTitle(title);
     }
 
+    @GetMapping("/searchbycategory/{category}")
+    public List<BookEntity> getBooksByCategory(@PathVariable String category) {
+        return service.getBooksByCategory(category);
+    }
+
 
 
 
