@@ -19,25 +19,30 @@ public class BookController {
 
     @PostMapping("/add")
     @ResponseStatus(HttpStatus.CREATED)
-    public void addBook(@RequestBody Book book){
+    public void addBook(@RequestBody Book book) {
         service.addBook(book);
     }
 
     @GetMapping("/get")
     @ResponseStatus(HttpStatus.FOUND)
-    public List<BookEntity> getBooks(){
-      return service.getBooks();
+    public List<BookEntity> getBooks() {
+        return service.getBooks();
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<String> deleteBook(@PathVariable Long id){
-        return service.deleteBook(id) ?  ResponseEntity.ok("Deleted Book") : ResponseEntity.notFound().build();
+    public ResponseEntity<String> deleteBook(@PathVariable Long id) {
+        return service.deleteBook(id) ? ResponseEntity.ok("Deleted Book") : ResponseEntity.notFound().build();
     }
 
     @GetMapping("/search/{id}")
-    public Book getBookById(@PathVariable Long id){
-     return service.getBookById(id);
+    public Book getBookById(@PathVariable Long id) {
+        return service.getBookById(id);
+    }
+
+    @GetMapping("/searchbytitle/{title}")
+    public List<BookEntity> getBooksByTitle(@PathVariable String title) {
+        return service.getBooksByTitle(title);
     }
 
 

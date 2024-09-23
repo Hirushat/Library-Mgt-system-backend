@@ -9,6 +9,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -51,5 +52,18 @@ public class BookServiceImpl implements BookService {
         Optional<BookEntity> byId = repository.findById(id);
 
         return mapper.map(byId, Book.class);
+    }
+
+    @Override
+    public List<BookEntity> getBooksByTitle(String title) {
+        List<BookEntity> books = repository.findAll();
+        List<BookEntity> titledBooks = new ArrayList<>();
+
+        for (BookEntity book : books) {
+            if(book.getTitle().equals(title)){
+                titledBooks.add(book);
+            }
+        }
+        return titledBooks;
     }
 }
