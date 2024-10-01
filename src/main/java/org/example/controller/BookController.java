@@ -13,6 +13,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/book")
 @RequiredArgsConstructor
+@CrossOrigin
 public class BookController {
 
     final BookService service;
@@ -24,13 +25,11 @@ public class BookController {
     }
 
     @GetMapping("/get")
-    @ResponseStatus(HttpStatus.FOUND)
     public List<BookEntity> getBooks() {
         return service.getBooks();
     }
 
     @DeleteMapping("/{id}")
-    @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<String> deleteBook(@PathVariable Long id) {
         return service.deleteBook(id) ? ResponseEntity.ok("Deleted Book") : ResponseEntity.notFound().build();
     }
@@ -49,8 +48,4 @@ public class BookController {
     public List<BookEntity> getBooksByCategory(@PathVariable String category) {
         return service.getBooksByCategory(category);
     }
-
-
-
-
 }

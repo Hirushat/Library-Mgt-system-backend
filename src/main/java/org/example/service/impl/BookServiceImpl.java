@@ -60,7 +60,7 @@ public class BookServiceImpl implements BookService {
         List<BookEntity> titledBooks = new ArrayList<>();
 
         for (BookEntity book : books) {
-            if(book.getTitle().equals(title)){
+            if(book.getTitle().equalsIgnoreCase(title)){
                 titledBooks.add(book);
             }
         }
@@ -73,7 +73,7 @@ public class BookServiceImpl implements BookService {
         List<BookEntity> titledBooks = new ArrayList<>();
 
         for (BookEntity book : books) {
-            if(book.getCategory().equals(category)){
+            if(book.getCategory().equalsIgnoreCase(category)){
                 titledBooks.add(book);
             }
         }
